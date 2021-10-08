@@ -40,6 +40,7 @@ $(document).on('submit','#adicionar',function(e) {
 		success: function(retorno){
 			//navigator.notification.alert(retorno, alertCallback, 'Aviso!');
       //alert(retorno);
+      $("#nomelocal").val("");
 			$('#lat').val("");
 			$('#long').val("");
       $(".modal-body").html(retorno);
@@ -49,9 +50,9 @@ $(document).on('submit','#adicionar',function(e) {
 
 	e.preventDefault();
 
-//funçao login
 });
 
+//funçao login
 function alertCallback (){};
 $(document).on('submit','#logar',function(e) {
   var url = 'https://maestoques.profrodolfo.com.br/sombra-facil/';
@@ -60,20 +61,32 @@ $(document).on('submit','#logar',function(e) {
 		url: url+'login.php',
 		data:$(this).serialize(),
 		type:'POST',
-		success: function(retorno){
-		//navigator.notification.alert(retorno, alertCallback, 'Login!');
-    //alert(retorno);
+    success: function(retorno){
+      //navigator.notification.alert(retorno, alertCallback, 'Login!');
+      //alert(retorno);
 
-			$('#login').val("");
-			$('#senha').val("");
-      if(retorno == 'login correto!'){
-      window.location.href = 'pagina.html';
-      }else if(retorno == 'login correto!!'){
-        window.location.href = 'paginaadm.html';
-		  }else{
-        $(".modal-body").html(retorno);
-        $("#alerta").modal("show");
-      }
+        $('#login').val("");
+        $('#senha').val("");
+        var user = JSON.parse(retorno);
+        
+        if(user.correto){
+          localStorage.setItem('cd', user.cd_usuario);
+          localStorage.setItem('nome', user.nm_usuario);
+          localStorage.setItem('login', user.login);
+          localStorage.setItem('senha', user.senha);
+          localStorage.setItem('nivel', user.nivel);
+          localStorage.setItem('rg_usuario', user.rg_usuario);
+          localStorage.setItem('telefone', user.telefone);
+
+          if(user.nivel == ""){
+            window.location.href = 'pagina.html';
+          }else{
+            window.location.href = 'paginaadm.html';
+          }
+        }else{
+          $(".modal-body").html("Usuario ou senha invalidos");
+          $("#alerta").modal("show");
+        }
       }
 	});
 
@@ -88,3 +101,12 @@ $(document).on('click','#pegarlocal',function(e) {
     var onError = function(){};
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
 });
+
+function pegardados() {
+    $('#nomem').val(user.nm_usuario);
+    $('#loginm').val(user.login);
+    $('#senham').val(user.senha);
+    $('#telefonem').val(user.telefone);
+    $('#rgm').val(user.rg_usuario);        
+};
+
