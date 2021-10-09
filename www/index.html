@@ -18,6 +18,24 @@
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/login.css">
 
+    <script type="text/javascript">
+
+			//função para aleatorizar as imagens
+
+			//quantidade de imagens
+			var totalCount = 3;
+			function AleatorizarImagem(){
+			//random
+			var num = Math.ceil( Math.random() * totalCount );
+			//as imagem devem ser nomeadas com o numero, ex: 1.jpg, 2.jpg
+			document.body.background = num+'.jpg';
+			//para não repetir a imagem
+			document.body.style.backgroundRepeat = "no-repeat";// Background repeat
+			//para deixar a imagem do tamanho da tela
+			document.body.style.backgroundSize="100vw 100vh";
+		}
+		</script>
+
   </head>
 
   <body>
@@ -58,4 +76,9 @@
     </div>
 
   </body>
+
+  <script type="text/javascript"> 
+		AleatorizarImagem();
+	</script>
+
 </html>

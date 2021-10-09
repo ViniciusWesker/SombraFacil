@@ -110,3 +110,18 @@ function pegardados() {
     $('#rgm').val(user.rg_usuario);        
 };
 
+// //função para aleatorizar as imagens
+
+// //quantidade de imagens
+// var totalCount = 6;
+// function AleatorizarImagem() 
+// {
+// //random
+// var num = Math.ceil( Math.random() * totalCount );
+// //as imagem devem ser nomeadas com o numero, ex: 1.jpg, 2.jpg
+// document.body.background = num+'.jpg';
+// //para não repetir a imagem
+// document.body.style.backgroundRepeat = "no-repeat";// Background repeat
+// //para deixar a imagem do tamanho da tela
+// document.body.style.backgroundSize="100% 100%";
+// }
