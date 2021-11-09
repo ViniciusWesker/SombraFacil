@@ -128,32 +128,59 @@ $(document).on('click','#habilita', function() {
     $('#salvar').show();
 });
 // função atualizar
-// $(document).on('click','#salvar',function(e) {
-// 	var url = 'https://maestoques.profrodolfo.com.br/sombra-facil/';
+$(document).on('click','#salvar',function(e) {
+	var url = 'https://maestoques.profrodolfo.com.br/sombra-facil/';
 
-//         $.ajax({
-//           url: url+'cadastrar.php',
-//           data:$(this).serialize(),
-//           type:'POST',
-//           success: function(retorno){
-//             //navigator.notification.alert(retorno, alertCallback, 'Aviso!');
-//             //alert(retorno);
+        $.ajax({
+          url: url+'cadastrar.php',
+          data:$(this).serialize(),
+          type:'POST',
+          success: function(retorno){
+            //navigator.notification.alert(retorno, alertCallback, 'Aviso!');
+            //alert(retorno);
           
-//             $('#nome').val("");
-//             $('#login').val("");
-//             $('#senha').val("");
-//             $('#rg').val("");
-//             $('#telefone').val("");
-//             $(".modal-body").html(retorno);
-//             //redirecionar('index.html');
-//           }
-//         });
-//         //enviar o form sem atualizar a pagina
-//         e.preventDefault();
+            $('#nome').val("");
+            $('#login').val("");
+            $('#senha').val("");
+            $('#rg').val("");
+            $('#telefone').val("");
+            $(".modal-body").html(retorno);
+            //redirecionar('index.html');
+          }
+        });
+        //enviar o form sem atualizar a pagina
+        e.preventDefault();
 
-// });
-  
-  
+});
+// function listar(){
+// alert('ok');
+//  $.ajax({
+//        url:'https://maestoques.profrodolfo.com.br/sombra-facil/listartodoslocais.php',
+//        type:'get',
+//        data: null,
+//        success:function(data){
+//          var lo = JSON.parse(data);
+//          var x = lo.length;
+//          var texto;
+//          for(var i = 0; i<x;i++){
+           
+//            texto += '<a href="adddisponivel.html"><p id="'+lo[i].cd_localizacao+'" class="contato black-text text-black">'+lo[i].nome_posto+'</a><br>';
+        
+                
+//             }
+//             $('#listar').html(texto);
+            
+//         }
+//     });
+
+// }
+
+$(document).on('click','.local',function(){
+  var id = $(this).attr('id');
+  localStorage.setItem('id',id);
+  window.location="produto.html";
+});
+
     
 
 

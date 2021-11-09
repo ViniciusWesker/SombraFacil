@@ -1,13 +1,14 @@
 $(document).on("click","#codigo",function(){
   cordova.plugins.barcodeScanner.scan(
       function (result) {
-          alert("We got a barcode\n" +
-                "Resultado: " + result.text + "\n" +
-                "Formato: " + result.format + "\n" +
-                "Cancelado: " + result.cancelled);
+        window.location = result.text;
+          // alert("We got a barcode\n" +
+          //       "Resultado: " + result.text + "\n" +
+          //       "Formato: " + result.format + "\n" +
+          //       "Cancelado: " + result.cancelled);
       },
       function (error) {
-          alert("Scanning failed: " + error);
+          alert('Está com problemas digite o link abaixo do qr code:<br> <input type="text">' + error);
       },
       {
           preferFrontCamera : false, // iOS and Android
