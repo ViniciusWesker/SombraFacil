@@ -14,6 +14,7 @@
     <script src="lib/jquery-3.6.0.min.js"></script>
 
     <!--Components-->
+    <script src="acao.js"></script>
     <script src="components/loader.js"></script>
     <script src="components/redirecionar.js"></script>
     <script src="components/local.js"></script>
@@ -38,7 +39,7 @@
 
           <!-- Botões -->
           <div class="btn-group">
-            <button id="pegardados" type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" onclick= "pegardados()"data-bs-target="#exampleModal">
+            <button onclick="pegardados()" type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
               </svg>
@@ -64,21 +65,24 @@
                     <h5 class="modal-title" id="exampleModalLabel">Informações Do Usuário</h5>
                   </div>
                   <div class="modal-body">
+                    <form method="POST">
+                    <input type="hidden" id="cd" aria-describedby="nome" placeholder=" Digite seu nome completo" name="cd"><br>
                     <label for="nome completo">Nome completo:</label><br>
-                    <input type="text" id="nomem" aria-describedby="nome" placeholder=" Digite seu nome completo" name="nome"><br>
+                    <input type="text" id="name" aria-describedby="nome" placeholder=" Digite seu nome completo" name="nome"><br>
                     <label for="nome completo">Login:</label><br>
-                    <input type="text" id="loginm" aria-describedby="login" placeholder=" Digite um login" name="login"><br>
+                    <input type="text" id="log" aria-describedby="login" placeholder=" Digite um login" name="login"><br>
                     <label for="RG">RG:</label><br>
-                    <input type="text" id="rgm" aria-describedby="rg" placeholder=" 12.345.678-9" name="rg"><br>
+                    <input type="text" id="reg" aria-describedby="rg" placeholder=" 12.345.678-9" name="rg"><br>
                     <label for="telefone">Telefone:</label><br>
-                    <input type="text" id="telefonem" aria-describedby="tel" placeholder="(DDD)XXXXX-XXXX" name="telefone"><br>
+                    <input type="text" id="tel" aria-describedby="tel" placeholder="(DDD)XXXXX-XXXX" name="telefone"><br>
                     <label for="exampleInputPassword1">Senha:</label><br>
-                    <input type="password" id="senham" placeholder="Digite sua senha" name="senha"><br>
+                    <input type="Password" id="sen" placeholder="Digite sua senha" name="senha"><br>
+                    </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-primary btn-block">Editar</button>
+                    <button id="habilita" type="button"  class="btn btn-outline-primary btn-block">Editar</button>
+                    <button id="salvar" type="hidden"  class="btn btn-outline-primary btn-block">Salvar</button>
                     <button type="button" class="btn btn-outline-danger btn-block" data-bs-dismiss="modal">voltar</button>
-                    
                   </div>
                 </div>
               </div>

@@ -8,21 +8,85 @@
         zoom:16
         
       });
-        var smallMarker = L.icon({
-        iconUrl: 'https://assets.mapquestapi.com/icon/v2/marker-sm.png',
-        iconRetinaUrl: 'https://assets.mapquestapi.com/icon/v2/marker-sm@2x.png',
-        iconSize: markerSize.sm,
-        iconAnchor: markerAnchor.sm,
-        popupAnchor: markerPopupAnchor.sm
-  });
-      L.marker([-24.1826792927263,-46.78078414096063]).addTo(map);
-     
+      L.marker([lat, long],{
+          icon: L.mapquest.icons.marker(),
+          draggable: false
+        }).bindPopup('Voce esta aqui!').addTo(map);
+     $.ajax({
+       url:'https://maestoques.profrodolfo.com.br/sombra-facil/listarlocal.php',
+       type:'get',
+       data: null,
+       success:function(data){
+         var pos = JSON.parse(data);
+         var x = pos.length;
+         for(var i = 0; i<x;i++){ 
+       L.marker([pos[i].latitude, pos[i].longitude],{
+          icon: L.mapquest.icons.marker(),
+          draggable: false
+        }).bindPopup(pos[i].nome_posto+ '<br>'+pos[i].tipo_produto+ ' disponivel:'+pos[i].quantidade+ '<br><b class="rota" lat="'+pos[i].latitude+'" lon="'+pos[i].longitude+'"> Ir até lá</b>').addTo(map);
+        }
+       }
+     });
+        //________________________________________rotas_____________________________________________________________________________________
+        $(document).on('click', '.rota',function(){
+          var a = $(this).attr('lat');
+          var b = $(this).attr('lon');
 
-      map.addControl(L.mapquest.control());
+        var directions = L.mapquest.directions();
+          directions.route({
+            start: [lat,long],
+            end: [a, b]
+          });
+      
+      var dir = MQ.routing.directions();
+
+      dir.route({
+        locations:[
+          'itanhaem, SP',
+          'santos,SP'
+        ]
 
 
+      });
+      CustomRouteLayer = MQ.Routing.RouteLayer.extend({
+        creteStartMarker: (location) =>{
+          var custon_icon;
+          var marker;
 
+          custon_icon = L.icon({
+            icon_Url: 'https://assets.mapquestapi.com/icon/v2/marker@2x.png',
+            iconSize:[20,29],
+            iconAnchor:[10,29],
+            popupAnchor:[0,-29]
+          });
+          Marker = L.Marker(location.latLng,{icon: custom_icon}.addTo(map));
+          return marker;
+        },
+          creteEndMarker: (location) =>{
+          var custon_icon;
+          var marker;
+
+          custon_icon = L.icon({
+            icon_Url: 'https://assets.mapquestapi.com/icon/v2/marker@2x.png',
+            iconSize:[20,29],
+            iconAnchor:[10,29],
+            popupAnchor:[0,-29]
+          });
+          Marker = L.Marker(location.latLng,{icon: custom_icon}.addTo(map));
+          return marker;
+        }
+
+      });
+      map.addLayer(new CustomRouteLayer({
+        directions: dir,
+        fitBounds: true
+      }));
+      var ten = 0;
+      ten = ten+1;
+        });
+      //________________________________________rotas-final______________________________________________________________________
   }
+
 function cordenatas(){
 
 
@@ -44,3 +108,4 @@ function cordenatas(){
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
     };
     cordenatas();
+   
