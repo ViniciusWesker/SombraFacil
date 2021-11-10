@@ -107,7 +107,7 @@ $(document).on('click','#pegarlocal',function(e) {
 function pegardados() {
     //cd2 para o modal2 (deletar)
     $('#cd2').val(localStorage.cd);
-    $('#cd2').show();
+    $('#cd2').hide();
 
     //modal1
     $('#cd').val(localStorage.cd);
