@@ -40,13 +40,13 @@
 
             <br>
             <div class="form-group">
-              <input type="text" class="form-control" id="cd_posto" name="cd_posto" >
+              <input type="text" class="form-control" id="cd_posto" name="cd_posto">
               <label>Nome do Posto:</label>
               <input type="text" class="form-control" id="nomelocal" aria-describedby="nome" placeholder="Nome" name="nome_posto">
               <label>Quantidade Disponíveis:</label>
-              <input type="number" class="form-control" id="quant" aria-describedby="quantidade" name="quantidade">
+              <input type="number" class="form-control" id="quant" aria-describedby="quantidade" name="quantidade" min="1" required>
               <label>Produto:</label><br>
-              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
                 <option selected>Selecione a opção</option>
                 <option name="produto" value="1">Mesa</option>
                 <option name="produto" value="2">Tenda</option>
