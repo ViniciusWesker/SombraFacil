@@ -105,13 +105,10 @@ $(document).on('click','#pegarlocal',function(e) {
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
 });
 function pegardados() {
-    //cd2 para o modal2 (deletar)
-    $('#cd2').val(localStorage.cd);
-    $('#cd2').hide();
-
-    //modal1
     $('#cd').val(localStorage.cd);
-    $('#cd').show();
+    // $('#cd').hide();
+    $('#cd2').val(localStorage.cd);
+    $('#cd2').show();
     $('#name').val(localStorage.nome);
     $('#log').val(localStorage.login);
     $('#tel').val(localStorage.telefone);
@@ -155,22 +152,24 @@ $(document).on('submit','#formulario',function(e) {
 
 });
 $(document).on('submit','#formulario2',function(e) {
-  var url = 'https://maestoques.profrodolfo.com.br/sombra-facil/';
+	var url = 'https://maestoques.profrodolfo.com.br/sombra-facil/';
 
-$.ajax({
-url: url+'deletar.php',
-data:$(this).serialize(),
-type:'POST',
-success: function(retorno){
-$("#body").html(retorno);
-$("#alerta").modal("show");
-//redirecionar('index.html');
-}
-});
-//enviar o form sem atualizar a pagina
-e.preventDefault();
-});
+        $.ajax({
+          url: url+'deletar.php',
+          data:$(this).serialize(),
+          type:'POST',
+          success: function(retorno){
 
+            $("#body").html(retorno);
+            $("#alerta").modal("show");
+            
+            // redirecionar('index.html');
+          }
+        });
+        //enviar o form sem atualizar a pagina
+        e.preventDefault();
+
+});
 // function listar(){
 // alert('ok');
 //  $.ajax({
@@ -196,8 +195,12 @@ e.preventDefault();
 
 $(document).on('click','.local',function(){
 	var id = $(this).attr('id');
-	localStorage.setItem('id',id);
+
+  localStorage.setItem('id',id);
+
+
 	window.location="produto.html";
+
 });
 
 // cadastrar produto
@@ -211,7 +214,7 @@ $(document).on('submit','#produto',function(e) {
 		type:'POST',
 		success: function(retorno){
 			//navigator.notification.alert(retorno, alertCallback, 'Aviso!');
-      //alert(retorno);
+      console.log(retorno);
 			$('#quant').val("");
       $(".modal-body").html(retorno);
       $("#alerta").modal("show");
@@ -221,7 +224,6 @@ $(document).on('submit','#produto',function(e) {
 	e.preventDefault();
 
 });
-
 
 
 
