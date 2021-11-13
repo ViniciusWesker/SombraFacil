@@ -11,7 +11,7 @@
       L.marker([lat, long],{
           icon: L.mapquest.icons.marker(),
           draggable: false
-        }).bindPopup('Voce esta aqui!').addTo(map);
+        }).bindPopup('Você está aqui!').addTo(map);
      $.ajax({
        url:'https://maestoques.profrodolfo.com.br/sombra-facil/listarlocal.php',
        type:'get',
@@ -23,7 +23,7 @@
        L.marker([pos[i].latitude, pos[i].longitude],{
           icon: L.mapquest.icons.marker(),
           draggable: false
-        }).bindPopup(pos[i].nome_posto+ '<br>'+pos[i].tipo_produto+ ' disponivel:'+pos[i].quantidade+ '<br><b class="rota" lat="'+pos[i].latitude+'" lon="'+pos[i].longitude+'"> Ir até lá</b>').addTo(map);
+        }).bindPopup(pos[i].nome_posto+ '<br>'+pos[i].tipo_produto+ ' disponivel:'+pos[i].quantidade+ '<br><b class="rota" lat="'+pos[i].latitude+'" lon="'+pos[i].longitude+'"><u>Clique aqui para mostrar o caminho</u></b>').addTo(map);
         }
        }
      });
