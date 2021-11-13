@@ -55,6 +55,6 @@ a:hover{
 .logo{
   position: absolute;
   left: 50%;
-  top: 5%;
+  top: -1%;
   transform: translate(-50%, -50%);
 }

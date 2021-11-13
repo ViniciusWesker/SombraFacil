@@ -27,6 +27,54 @@
         }
        }
      });
+
+     /*
+    -------------------------------------Tentando melhorar a exibição de produtos no posto---------------------------------------
+
+      L.marker([lat, long],{
+          icon: L.mapquest.icons.marker(),
+          draggable: false
+        }).bindPopup('Voce esta aqui!').addTo(map);
+     $.ajax({
+       url:'https://maestoques.profrodolfo.com.br/sombra-facil/listarlocal.php',
+       type:'get',
+       data: null,
+       success:function(data){
+         var pos = JSON.parse(data);
+         var x = pos.length;
+         for(var i = 0; i<x;i++){ 
+           $.ajax({
+              url:'https://maestoques.profrodolfo.com.br/sombra-facil/listarlocal.php',
+              type:{'posto': pos[i].cd_localizacao},
+              data: null,
+              success:function(data){
+                var po = JSON.parse(data);
+                var x = po.length;
+
+// L.marker([pos[i].latitude, pos[i].longitude],{
+//       icon: L.mapquest.icons.marker(),
+//       draggable: false
+//     }).bindPopup(pos[i].nome_posto+ '<br>'+po[i].tipo_produto+ ' disponivel:'+po[i].quantidade+ '<br><b class="rota" lat="'+pos[i].latitude+'" lon="'+pos[i].longitude+'"> Ir até lá</b>').addTo(map);          
+
+                  fhfh
+                  var txt='';
+                  txt+= pos[i].nome_posto+ '<br>';
+                for(var i = 0; i<x;i++){ 
+                        txt+=po[i].tipo_produto+ ' disponivel:'+po[i].quantidade+ '<br>';          
+                }
+                txt+='<b class="rota" lat="'+pos[i].latitude+'" lon="'+pos[i].longitude+'"> Ir até lá</b>';
+                L.marker([pos[i].latitude, pos[i].longitude],{
+                      icon: L.mapquest.icons.marker(),
+                      draggable: false
+                    }).bindPopup(txt).addTo(map);          
+                    console.log(txt);
+              }
+           });
+        }
+       }
+     });
+*/
+
         //________________________________________rotas_____________________________________________________________________________________
         $(document).on('click', '.rota',function(){
           var a = $(this).attr('lat');
@@ -108,4 +156,3 @@ function cordenatas(){
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
     };
     cordenatas();
-   
