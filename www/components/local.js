@@ -23,7 +23,7 @@
        L.marker([pos[i].latitude, pos[i].longitude],{
           icon: L.mapquest.icons.marker(),
           draggable: false
-        }).bindPopup(pos[i].nome_posto+ '<br>'+pos[i].tipo_produto+ ' disponivel:'+pos[i].quantidade+ '<br><b class="rota" lat="'+pos[i].latitude+'" lon="'+pos[i].longitude+'"><u>Clique aqui para mostrar o caminho</u></b>').addTo(map);
+        }).bindPopup(pos[i].nome_posto+ '<br>'+pos[i].tipo_produto+ ' disponivel:'+pos[i].quantidade+ '<br><b class="rota" lat="'+pos[i].latitude+'" lon="'+pos[i].longitude+'"><u style="cursor:pointer;">Clique aqui para mostrar o caminho</u></b>').addTo(map);
         }
        }
      });

@@ -65,9 +65,7 @@
   </platform>
   <platform name="android">
     <preference name="android-targetSdkVersion" value="29"/>
-    <icon src="/res/android/icon/ldpi.png" density="ldpi"/>
     <icon src="/res/android/icon/mdpi.png" density="mdpi"/>
-    <icon src="/res/android/icon/hdpi.png" density="hdpi"/>
     <icon src="/res/android/icon/xhdpi.png" density="xhdpi"/>
     <icon src="/res/android/icon/xxhdpi.png" density="xxhdpi"/>
     <icon src="/res/android/icon/xxxhdpi.png" density="xxxhdpi"/>
@@ -78,6 +76,8 @@
     <splash src="/res/android/screen/splash-port-xxhdpi.9.png" density="port-xxhdpi"/>
     <splash src="/res/android/screen/splash-port-xxxhdpi.9.png" density="port-xxxhdpi"/>
     <splash src="/res/android/screen/splash-mdpi.png" density="mdpi"/>
+    <icon src="/res/android/icon/ldpi.png" density="ldpi"/>
+    <icon src="/res/android/icon/hdpi.png" density="hdpi"/>
     <preference name="AndroidXEnabled" value="false"/>
   </platform>
   <platform name="electron">
